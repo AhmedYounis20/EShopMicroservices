@@ -1,6 +1,6 @@
-﻿namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products;
 
-public record CreateProductCommand(string Name,List<string> Category,string Descritpion,string ImagePath, decimal Price) : ICommand<CreateProductResult>;
+public record CreateProductCommand(string Name,List<string> Category,string Description, string ImagePath, decimal Price) : ICommand<CreateProductResult>;
 
     public record CreateProductResult(Guid Id);
 internal class CreateProductCommandHandler (IDocumentSession session): ICommandHandler<CreateProductCommand,CreateProductResult>
@@ -13,7 +13,7 @@ internal class CreateProductCommandHandler (IDocumentSession session): ICommandH
             Name = command.Name,
             Category = command.Category,
             ImageFile = command.ImagePath,
-            Description = command.Descritpion,
+            Description = command.Description,
             Price = command.Price,
         };
 

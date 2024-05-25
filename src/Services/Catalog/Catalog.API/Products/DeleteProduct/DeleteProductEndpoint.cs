@@ -1,5 +1,22 @@
-﻿namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products;
 
-public class DeleteProductEndpoint
+public record DeleteProductResponse(bool IsSuccess);
+public class DeleteProductEndpoint : ICarterModule
 {
+    public void AddRoutes(IEndpointRouteBuilder app)
+    {
+        app.MapDelete("/products/{id}", async (Guid id, ISender sender) =>
+        {
+            var command = new DeleteProductCommand(id);
+
+            var result = await sender.Send(command);
+            var response = result.Adapt<DeleteProductResponse>();
+            return Results.Ok(response);
+        })
+        .WithName("DeleteProduct")
+        .Produces<DeleteProductResponse>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .WithSummary("Update Product ya basha")
+        .WithDescription("Khalas ba2a");
+    }
 }

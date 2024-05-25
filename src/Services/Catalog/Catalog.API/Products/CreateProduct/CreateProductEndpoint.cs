@@ -1,6 +1,6 @@
-﻿namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products;
 
-public record CreateProductRequest(string Name, List<string> Category, string Descritpion, string ImagePath, decimal Price);
+public record CreateProductRequest(string Name, List<string> Category, string Description, string ImagePath, decimal Price);
 public record CreateProductResponse(Guid Id);
 
 
