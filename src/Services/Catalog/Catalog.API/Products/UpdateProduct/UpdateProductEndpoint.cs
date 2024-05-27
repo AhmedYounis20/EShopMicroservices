@@ -1,4 +1,4 @@
-﻿namespace Catalog.API.Products.CreateProduct;
+﻿namespace Catalog.API.Products.UpdateProduct;
 
 public record UpdateProductRequest(string Name, List<string> Category, string Description, string ImagePath, decimal Price);
 public record UpdateProductResponse(bool isSuccess);

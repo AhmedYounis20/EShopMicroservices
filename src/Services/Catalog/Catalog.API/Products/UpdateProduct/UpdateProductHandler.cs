@@ -1,4 +1,4 @@
-﻿namespace Catalog.API.Products;
+﻿namespace Catalog.API.Products.UpdateProduct;
 
 public record UpdateProductResult(bool IsSuccess);
 public record UpdateProductCommand(Guid Id,string Name, List<string> Category, string Description, string ImagePath, decimal Price) : ICommand<UpdateProductResult>;
@@ -20,7 +20,7 @@ public class UpdateProductCommandHandler(IDocumentSession session, ILogger<Updat
         product.ImageFile= command.ImagePath;
 
         session.Update<Product>(product);
-        await session.SaveChangesAsync();
+        await session.SaveChangesAsync(cancellationToken);
 
         return new UpdateProductResult(true);
     }
