@@ -1,28 +1,29 @@
-﻿namespace Catalog.API.Products;
-
-public record CreateProductRequest(string Name, List<string> Category, string Description, string ImagePath, decimal Price);
-public record CreateProductResponse(Guid Id);
-
-
-public class CreateProductEndpoint : ICarterModule
+﻿namespace Catalog.API.Products.CreateProduct
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+    public record CreateProductRequest(string Name, List<string> Category, string Description, string ImagePath, decimal Price);
+    public record CreateProductResponse(Guid Id);
+
+
+    public class CreateProductEndpoint : ICarterModule
     {
-        app.MapPost("/products", async (CreateProductRequest request, ISender sender) =>
+        public void AddRoutes(IEndpointRouteBuilder app)
         {
+            app.MapPost("/products", async (CreateProductRequest request, ISender sender) =>
+                {
 
-            var command = request.Adapt<CreateProductCommand>();
+                    var command = request.Adapt<CreateProductCommand>();
 
-            var result = await sender.Send(command);
+                    var result = await sender.Send(command);
 
-            var response = result.Adapt<CreateProductResponse>();
+                    var response = result.Adapt<CreateProductResponse>();
 
-            return Results.Created($"/products/{response.Id}", response);
-        })
-        .WithName("CreateProduct")
-        .Produces<CreateProductResponse>(StatusCodes.Status201Created)
-        .ProducesProblem(StatusCodes.Status404NotFound)
-        .WithSummary("Create Product ya basha")
-        .WithDescription("Khalas ba2a");
+                    return Results.Created($"/products/{response.Id}", response);
+                })
+                .WithName("CreateProduct")
+                .Produces<CreateProductResponse>(StatusCodes.Status201Created)
+                .ProducesProblem(StatusCodes.Status404NotFound)
+                .WithSummary("Create Product ya basha")
+                .WithDescription("Khalas ba2a");
+        }
     }
 }
