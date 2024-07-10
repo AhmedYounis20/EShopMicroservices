@@ -3,15 +3,26 @@ version: '3.4'
 services:
   catalogdb:
     image: postgres
-    restart: always
-    shm_size: 128mb
-    environment:
-      POSTGRES_PASSWORD: postgres
+  basketdb:
+    image: postgres
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 5050:8080
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pgadmin@codepruner.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadminP@ssw0rd!"
 volumes:
   postgres_catalog:
+  postgres_basket:
