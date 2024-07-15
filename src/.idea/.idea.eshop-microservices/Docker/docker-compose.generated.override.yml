@@ -1,6 +1,39 @@
 # This is a generated file. Not intended for manual editing.
 version: "3.4"
 services:
+  basket.api:
+    build:
+      context: "D:\\work\\EShopMicroservices\\src"
+      dockerfile: "Services/Basket/Basket.API/Dockerfile"
+      target: "base"
+      args:
+        BUILD_CONFIGURATION: "Debug"
+    command: []
+    entrypoint:
+    - "/opt/rider-debugger/linux-x64/dotnet/dotnet"
+    - "/opt/rider-debugger/JetBrains.Debugger.Worker.exe"
+    - "--mode=server"
+    - "--frontend-port=57100"
+    - "--backend-port=57300"
+    - "--timeout=60"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      RIDER_DEBUGGER_LOG_DIR: "/var/opt/rider-debugger"
+      RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
+    image: "basket.api:dev"
+    ports:
+    - "127.0.0.1:57000:57100"
+    - "127.0.0.1:57200:57300"
+    volumes:
+    - "C:\\Users\\younis\\.nuget\\packages:/home/app/.nuget/packages"
+    - "D:\\work\\EShopMicroservices\\src\\Services\\Basket\\Basket.API:/app:rw"
+    - "D:\\work\\EShopMicroservices\\src:/src:rw"
+    - "C:\\Users\\younis\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2023.3.3\\\
+      Linux64:/opt/rider-debugger"
+    - "C:\\Program Files\\JetBrains\\JetBrains Rider 2023.3.3\\bin:/etc/opt/rider-debugger/backend-log.xml"
+    - "C:\\Users\\younis\\AppData\\Local\\JetBrains\\Rider2023.3\\log\\DebuggerWorker\\\
+      JetBrains.Debugger.Worker.2024_7_14_05_45_18:/var/opt/rider-debugger:rw"
+    working_dir: "/app"
   catalog.api:
     build:
       context: "D:\\work\\EShopMicroservices\\src"
@@ -22,8 +55,8 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "catalogapi:dev"
     ports:
-    - "127.0.0.1:57004:57100"
-    - "127.0.0.1:57204:57300"
+    - "127.0.0.1:57001:57100"
+    - "127.0.0.1:57201:57300"
     volumes:
     - "C:\\Users\\younis\\.nuget\\packages:/home/app/.nuget/packages"
     - "D:\\work\\EShopMicroservices\\src\\Services\\Catalog\\Catalog.API:/app:rw"
@@ -32,5 +65,5 @@ services:
       Linux64:/opt/rider-debugger"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2023.3.3\\bin:/etc/opt/rider-debugger/backend-log.xml"
     - "C:\\Users\\younis\\AppData\\Local\\JetBrains\\Rider2023.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2024_7_10_07_17_43:/var/opt/rider-debugger:rw"
+      JetBrains.Debugger.Worker.2024_7_14_05_45_18:/var/opt/rider-debugger:rw"
     working_dir: "/app"

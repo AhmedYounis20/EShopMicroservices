@@ -5,7 +5,8 @@ services:
     image: postgres
   basketdb:
     image: postgres
-
+  distributedcache:
+    image: redis
   adminer:
     image: adminer
     restart: always
@@ -16,6 +17,11 @@ services:
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
+  basket.api:
+    image: basket.api
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
   pgadmin:
     image: dpage/pgadmin4
     ports:
@@ -26,3 +32,4 @@ services:
 volumes:
   postgres_catalog:
   postgres_basket:
+
