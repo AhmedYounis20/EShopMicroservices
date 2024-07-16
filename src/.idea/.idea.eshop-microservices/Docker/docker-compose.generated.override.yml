@@ -22,8 +22,8 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "basket.api:dev"
     ports:
-    - "127.0.0.1:57000:57100"
-    - "127.0.0.1:57200:57300"
+    - "127.0.0.1:57014:57100"
+    - "127.0.0.1:57214:57300"
     volumes:
     - "C:\\Users\\younis\\.nuget\\packages:/home/app/.nuget/packages"
     - "D:\\work\\EShopMicroservices\\src\\Services\\Basket\\Basket.API:/app:rw"
@@ -32,7 +32,7 @@ services:
       Linux64:/opt/rider-debugger"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2023.3.3\\bin:/etc/opt/rider-debugger/backend-log.xml"
     - "C:\\Users\\younis\\AppData\\Local\\JetBrains\\Rider2023.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2024_7_14_05_45_18:/var/opt/rider-debugger:rw"
+      JetBrains.Debugger.Worker.2024_7_16_20_21_33:/var/opt/rider-debugger:rw"
     working_dir: "/app"
   catalog.api:
     build:
@@ -55,8 +55,8 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "catalogapi:dev"
     ports:
-    - "127.0.0.1:57001:57100"
-    - "127.0.0.1:57201:57300"
+    - "127.0.0.1:57015:57100"
+    - "127.0.0.1:57215:57300"
     volumes:
     - "C:\\Users\\younis\\.nuget\\packages:/home/app/.nuget/packages"
     - "D:\\work\\EShopMicroservices\\src\\Services\\Catalog\\Catalog.API:/app:rw"
@@ -65,5 +65,5 @@ services:
       Linux64:/opt/rider-debugger"
     - "C:\\Program Files\\JetBrains\\JetBrains Rider 2023.3.3\\bin:/etc/opt/rider-debugger/backend-log.xml"
     - "C:\\Users\\younis\\AppData\\Local\\JetBrains\\Rider2023.3\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2024_7_14_05_45_18:/var/opt/rider-debugger:rw"
+      JetBrains.Debugger.Worker.2024_7_16_20_21_33:/var/opt/rider-debugger:rw"
     working_dir: "/app"
