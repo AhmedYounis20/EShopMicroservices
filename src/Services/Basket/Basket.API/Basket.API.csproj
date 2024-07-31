@@ -10,21 +10,29 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\..\..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\..\..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
+        <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Carter" Version="8.2.1" />
-      <PackageReference Include="Marten" Version="7.23.1" />
-      <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.0-preview.6.24328.4" />
-      <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
-      <PackageReference Include="Scrutor" Version="4.2.2" />
+        <PackageReference Include="Carter" Version="8.2.1" />
+        <PackageReference Include="Marten" Version="7.23.1" />
+        <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.0-preview.6.24328.4" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+        <PackageReference Include="Scrutor" Version="4.2.2" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.64.0" />
+
     </ItemGroup>
 
+
+    <ItemGroup>
+        <Protobuf Include="..\..\Discount\Discount.Grpc\Protos\discount.proto" GrpcServices="Client">
+            <Link>Protos\discount.proto</Link>
+        </Protobuf>
+    </ItemGroup>
 </Project>
