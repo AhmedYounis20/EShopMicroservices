@@ -7,4 +7,27 @@ public record Payment
     public string Expiration { get; } = default!;
     public string Cvv { get; } = default!;
     public int PaymentMethod { get; } = default!;
+    private Payment(string cardName, string cardNumber, string expiration, string cvv, int paymentMethod)
+    {
+        CardName = cardName;
+        CardNumber = cardNumber;
+        Expiration = expiration;
+        Cvv = cvv;
+        PaymentMethod = paymentMethod;
+    }
+    private static Payment Of(string cardName, string cardNumber, string expiration, string cvv, int paymentMethod)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(cardName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(cardNumber);
+        ArgumentException.ThrowIfNullOrWhiteSpace(expiration);
+        ArgumentException.ThrowIfNullOrWhiteSpace(cvv);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(cvv.Length,3);
+        
+        return new Payment(
+            cardName,
+            cardNumber,
+            expiration,
+            cvv,
+            paymentMethod);
+    }
 }

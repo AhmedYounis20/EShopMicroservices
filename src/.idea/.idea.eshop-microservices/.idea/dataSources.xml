@@ -24,5 +24,21 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="@localhost" uuid="a1456e6f-8181-4977-892e-47cb2b7a29d6">
+      <driver-ref>sqlserver.jb</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=localhost,1433;User Id=sa;Password=Database@password222000;Encrypt=false;</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="OrderDb@localhost" uuid="7431025d-2553-4bec-9703-756233faa4b7">
+      <driver-ref>sqlserver.jb</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=localhost,1433;Database=OrderDb;User Id=sa;Password=Database@password222000;Encrypt=false</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
