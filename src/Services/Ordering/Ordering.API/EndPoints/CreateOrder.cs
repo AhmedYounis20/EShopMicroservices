@@ -2,8 +2,8 @@ using Ordering.Application.Orders.Commands.CreateOrder;
 
 namespace Ordering.API.EndPoints;
 
-public abstract record CreateOrderRequest(OrderDto Order);
-public abstract record CreateOrderResponse(Guid Id);
+public  record CreateOrderRequest(OrderDto Order);
+public  record CreateOrderResponse(Guid Id);
 
 public class CreateOrder : ICarterModule
 {

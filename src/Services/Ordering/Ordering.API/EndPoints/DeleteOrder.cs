@@ -4,7 +4,7 @@ using Ordering.Application.Orders.Commands.UpdateOrder;
 
 namespace Ordering.API.EndPoints;
 
-public abstract record DeleteOrderResponse(bool IsSuccess);
+public record DeleteOrderResponse(bool IsSuccess);
 
 public class DeleteOrder : ICarterModule
 {

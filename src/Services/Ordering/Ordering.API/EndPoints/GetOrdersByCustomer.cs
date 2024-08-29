@@ -1,8 +1,9 @@
+using BuildingBlocks.Pagination;
 using Ordering.Application.Orders.Queries.GetOrdersByCustomer;
 
 namespace Ordering.API.EndPoints;
 
-public abstract record GetOrdersByCustomerResponse(IEnumerable<OrderDto> Orders);
+public record GetOrdersByCustomerResponse(IEnumerable<OrderDto> Orders);
 
 public class GetOrdersByCustomer : ICarterModule
 {

@@ -13,7 +13,7 @@ public class GetOrdersQueryHandler(IApplicationDbContext dbContext): IQueryHandl
         long totalCount = await dbContext.Orders.LongCountAsync(cancellationToken);
         
         var orders = await dbContext.Orders.Include(e => e.OrderItems).AsNoTracking()
-            .OrderBy(e => e.OrderName)
+            .OrderBy(e => e.OrderName.Value)
             .Skip(query.PaginationRequest.PageIndex * query.PaginationRequest.PageSize)
             .Take(query.PaginationRequest.PageSize)
             .ToListAsync(cancellationToken);

@@ -1,9 +1,10 @@
+using BuildingBlocks.Pagination;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Ordering.Application.Orders.Queries.GetOrdersByName;
 
 namespace Ordering.API.EndPoints;
 
-public abstract record GetOrdersByNameResponse(IEnumerable<OrderDto> Orders);
+public record GetOrdersByNameResponse(IEnumerable<OrderDto> Orders);
 
 public class GetOrdersByName : ICarterModule
 {
