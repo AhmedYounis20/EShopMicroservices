@@ -1,3 +1,5 @@
+using System.Reflection;
+using BuildingBlocks.Messaging.MassTransit;
 using Discount.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +40,9 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
         ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
     }
 );
+
+// message broker async communication 
+builder.Services.AddMessageBroker(builder.Configuration);
 
 // Application Cross Cutting Services
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();

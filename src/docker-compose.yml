@@ -7,6 +7,9 @@ services:
     image: postgres
   orderdb:
     image: mcr.microsoft.com/mssql/server
+  messageBroker:
+    image : rabbitmq:management
+    
   distributedcache:
     image: redis
   catalog.api:
