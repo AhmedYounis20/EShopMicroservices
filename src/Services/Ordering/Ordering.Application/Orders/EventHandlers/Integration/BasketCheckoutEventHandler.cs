@@ -15,7 +15,6 @@ public class BasketCheckoutEventHandler(ILogger<BasketCheckoutEventHandler> logg
         logger.LogInformation("Integration Event handled: {IntergrationEvent}",context);
         var command = MapToCreateCommand(context.Message);
         await sender.Send(command);
-        throw new NotImplementedException();
     }
 
     private CreateOrderCommand MapToCreateCommand(BasketCheckoutEvent message)

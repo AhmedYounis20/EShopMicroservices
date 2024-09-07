@@ -23,9 +23,7 @@ public class CheckoutBasketQueryHandler(IBasketRepository repository, IPublishEn
     {
         var basket = await repository.GetBasket(command.BasketCheckoutDto.UserName,cancellationToken);
         if (basket == null)
-        {
             return new CheckoutBasketResult(false);
-        }
 
         var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
         eventMessage.TotalPrice = basket.TotalPrice;
